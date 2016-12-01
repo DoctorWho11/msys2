@@ -23,7 +23,8 @@ makedepends=('git')
 #checkdepends=('dejagnu') # Windows executables could run on Arch through bin_mft and Wine
 optdepends=()
 provides=('mingw-w64-gcc-base')
-replaces=()
+replaces=('mingw-w64-x86_64-gcc' 'mingw-w64-i686-gcc')
+conflicts('mingw-w64-x86_64-gcc' 'mingw-w64-i686-gcc')
 backup=()
 options=('!strip' 'staticlibs' '!emptydirs' '!buildflags')
 source=("git://gcc.gnu.org/git/gcc.git#commit=${_commit}"
