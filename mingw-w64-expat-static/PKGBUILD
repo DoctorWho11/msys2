@@ -8,11 +8,17 @@ license=("custom")
 makedepends=(mingw-w64-gcc mingw-w64-pkg-config)
 depends=(mingw-w64-crt)
 options=(!strip !buildflags staticlibs)
-source=("http://downloads.sourceforge.net/expat/expat-${pkgver}.tar.gz")
-sha256sums=('d9e50ff2d19b3538bd2127902a89987474e1a4db8e43a66a4d1a712ab9a504ff')
+source=("http://downloads.sourceforge.net/sourceforge/expat/expat-${pkgver}.tar.bz2"
+        "expat-2.2.0-CVE-2016-0718-regression.patch")
+sha256sums=('d9e50ff2d19b3538bd2127902a89987474e1a4db8e43a66a4d1a712ab9a504ff'
+            'e64ff17753e601f23a6825beeb930aef1bec17b7eec7dce4e8c465b3c0cd66ff')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
+prepare() {
+  cd expat-$pkgver
+  patch -p2 -i "$srcdir"/expat-2.2.0-CVE-2016-0718-regression.patch
+}
 build() {
   cd "$srcdir/expat-$pkgver"
   for _arch in ${_architectures}; do
