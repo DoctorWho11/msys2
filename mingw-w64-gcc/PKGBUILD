@@ -24,7 +24,7 @@ makedepends=('git')
 optdepends=()
 provides=('mingw-w64-gcc-base')
 replaces=('mingw-w64-x86_64-gcc' 'mingw-w64-i686-gcc')
-conflicts('mingw-w64-x86_64-gcc' 'mingw-w64-i686-gcc')
+conflicts=('mingw-w64-x86_64-gcc', 'mingw-w64-i686-gcc')
 backup=()
 options=('!strip' 'staticlibs' '!emptydirs' '!buildflags')
 source=("git://gcc.gnu.org/git/gcc.git#commit=${_commit}"
